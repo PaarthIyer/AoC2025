@@ -1,4 +1,4 @@
-def largest_joltage(bank: list[int], num_batts=12) -> int:
+def largest_joltage(bank: list[int], num_batts: int = 12) -> int:
     joltage = 0
     prev_idx = -1
 

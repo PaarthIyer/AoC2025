@@ -8,7 +8,8 @@ def main(data: str) -> None:
     )
 
     kernel = np.ones((3, 3), dtype=np.int8)
-    ngh = convolve2d(grid, kernel, mode="same", boundary="fill") - grid
+    kernel[1, 1] = 0
+    ngh = convolve2d(grid, kernel, mode="same", boundary="fill", fillvalue=0)
 
     ans = np.sum((grid == 1) & (ngh < 4))
     print("Answer:", ans)

@@ -1,0 +1,2 @@
+- fix day 3 code, can be made linear time
+-- use a stack

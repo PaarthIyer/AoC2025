@@ -46,7 +46,7 @@ def timer(func: Callable[P, R]) -> Callable[P, R]:
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
         elapsed_time = end_time - start_time
-        print(f"\nExecution time: {elapsed_time:.6f} seconds")
+        print(f"\nExecution time: {elapsed_time:.6f} seconds\n")
         return result
 
     return wrapper

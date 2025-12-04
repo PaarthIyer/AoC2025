@@ -24,8 +24,7 @@ touch "$DIR/input.in"
 touch "$DIR/test.in"
 
 # Python template
-PY_TEMPLATE="
-def main(data:str) -> None:
+PY_TEMPLATE="def main(data:str) -> None:
     pass
 "
 

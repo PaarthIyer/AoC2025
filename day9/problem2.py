@@ -15,14 +15,16 @@ def largest_rect(pts: list[tuple[int, int]]) -> int:
         for j in range(i + 1, n):
             x1, y1, x2, y2 = min_max(pts[i], pts[j])
             area = (x2 - x1 + 1) * (y2 - y1 + 1)
-            if area > largest_area:
-                valid = True
-                for xx1, yy1, xx2, yy2 in segments:
-                    if xx1 < x2 and yy1 < y2 and xx2 > x1 and yy2 > y1:
-                        valid = False
-                        break
-                if valid:
-                    largest_area = area
+            if area <= largest_area:
+                continue
+
+            valid = True
+            for xx1, yy1, xx2, yy2 in segments:
+                if xx1 < x2 and yy1 < y2 and xx2 > x1 and yy2 > y1:
+                    valid = False
+                    break
+            if valid:
+                largest_area = area
 
     return largest_area
 

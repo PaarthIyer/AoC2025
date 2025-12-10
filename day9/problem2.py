@@ -1,4 +1,4 @@
-def min_max(pt1, pt2):
+def min_max(pt1: tuple[int, int], pt2: tuple[int, int]) -> tuple[int, int, int, int]:
     x1, y1 = pt1
     x2, y2 = pt2
     return (min(x1, x2), min(y1, y2), max(x1, x2), max(y1, y2))

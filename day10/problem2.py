@@ -29,9 +29,9 @@ def num_switch_presses(switch_matrix: NDArray, joltage):
     """
     m, n = switch_matrix.shape
 
-    prob = pulp.LpProblem("MinSumSolution", pulp.LpMinimize)
+    prob = pulp.LpProblem()
 
-    # Create integer variables X_i >= 0
+    # integer variables X_i >= 0
     X = [pulp.LpVariable(f"x{i}", lowBound=0, cat="Integer") for i in range(n)]
 
     # minimize sum(X)
@@ -43,7 +43,10 @@ def num_switch_presses(switch_matrix: NDArray, joltage):
 
     prob.solve(pulp.PULP_CBC_CMD(msg=False))
 
-    return np.array([var.value() for var in X], dtype=int)
+    res = 0
+    for v in X:
+        res += v.value()
+    return int(res)
 
 
 def main(data: str) -> None:
@@ -52,5 +55,5 @@ def main(data: str) -> None:
     for row in rows:
         sp, jl = parse_row(row)
         res = num_switch_presses(sp, jl)
-        ans += sum(res)
+        ans += res
     print(f"Answer : {ans}")

@@ -16,6 +16,17 @@ def parse_row(row: str):
 
 
 def num_switch_presses(switch_matrix: NDArray, joltage):
+    """
+    This becomes a LP with constraints.
+    All values are non negative integers.
+    A -> 0/1 matrix. Denotes the counters increased when the ith switch is pressed.
+    B -> The required joltages.
+    X -> Number of times to press each switch.
+
+    A X = B
+
+    Need to maximize sum(x_i).
+    """
     m, n = switch_matrix.shape
 
     prob = pulp.LpProblem("MinSumSolution", pulp.LpMinimize)
